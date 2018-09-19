@@ -51,18 +51,15 @@ namespace Microsoft.Bot.Builder.AI.Translation.RequestBuilder
             {
                 throw new ArgumentNullException(nameof(translatorRequests));
             }
+
             var requestUri = new Uri(DetectUrl);
-            var request = new HttpRequestMessage(HttpMethod.Post, requestUri);
-            request.Headers.Add("Ocp-Apim-Subscription-Key", _apiKey);
-            request.Content = new StringContent(JsonConvert.SerializeObject(translatorRequests), Encoding.UTF8, "application/json");
-            return request;
-            //return this.GetRequestMessage(requestUri, translatorRequests);
+            return this.GetRequestMessage(requestUri, translatorRequests);
         }
 
         /// <summary>
         /// Build HttpRequestMessage with its content.
         /// </summary>
-        /// <param name="requestUri">Uri of request</param>
+        /// <param name="requestUri">Uri of request.</param>
         /// <param name="translatorRequests">The models to be included in the content.</param>
         /// <returns>An HttpRequestMessage with its content.</returns>
         private HttpRequestMessage GetRequestMessage(Uri requestUri, IEnumerable<TranslatorRequestModel> translatorRequests)

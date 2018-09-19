@@ -32,52 +32,51 @@
         [LuisIntent("None")]
         public async Task None(IDialogContext context, LuisResult result)
         {
-            await this.ShowTranslation(context, result);
-            await this.ShowLuisResult(context, result);
+            await this.EchoToUser(context, result);
         }
 
         [LuisIntent("SearchHotels")]
         public async Task Search(IDialogContext context, IAwaitable<IMessageActivity> activity, LuisResult result)
         {
-            await this.ShowTranslation(context, result);
-            await this.ShowLuisResult(context, result);
-
+            await this.EchoToUser(context, result);
         }
 
         [LuisIntent("ShowHotelsReviews")]
         public async Task Reviews(IDialogContext context, LuisResult result)
         {
-            await this.ShowTranslation(context, result);
-            await this.ShowLuisResult(context, result);
+            await this.EchoToUser(context, result);
         }
 
         [LuisIntent("Help")]
         public async Task Help(IDialogContext context, LuisResult result)
         {
-            await this.ShowTranslation(context, result);
-            await this.ShowLuisResult(context, result);
+            await this.EchoToUser(context, result);
         }
 
         [LuisIntent("Greeting")]
         public async Task Greeting(IDialogContext context, LuisResult result)
         {
+            await this.EchoToUser(context, result);
+        }
+
+        private async Task EchoToUser(IDialogContext context, LuisResult result)
+        {
             await this.ShowTranslation(context, result);
             await this.ShowLuisResult(context, result);
+            context.Wait(MessageReceived);
         }
 
         private async Task ShowTranslation(IDialogContext context, LuisResult result)
         {
-            string translationMessage = "Your message after translation is: " + result.Query;
+            string translationMessage = $"Your input message after translation is " + result.Query;
             await context.PostAsync(translationMessage);
-            context.Wait(MessageReceived);
         }
 
 
         private async Task ShowLuisResult(IDialogContext context, LuisResult result)
         {
-            string luisMessage = "Your top intent was is: " + result.Intents[0].Intent + " with score: " + result.Intents[0].Score.ToString();
+            string luisMessage = $"After using LUIS recognition:\nthe top intent was: {result.Intents[0].Intent}, with score {result.Intents[0].Score}";
             await context.PostAsync(luisMessage);
-            context.Wait(MessageReceived);
         }
     }
 }
