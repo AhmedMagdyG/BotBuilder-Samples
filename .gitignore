@@ -7,6 +7,17 @@
 *.userosscache
 *.sln.docstates
 
+# dotnet core app settings
+/*/appsettings.json
+/*/appsettings.production.json
+/*/appsettings.development.json
+
+# webapi app settings
+/*/web.config
+
+# JS/ TS/ es6 env files
+/*/*.env
+
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
@@ -136,6 +147,7 @@ DocProject/Help/html
 
 # Click-Once directory
 publish/
+PublishProfiles/
 
 # Publish Web Output
 *.[Pp]ublish.xml
@@ -256,3 +268,5 @@ paket-files/
 
 # Visual Studio Code
 .vscode/
+/javascript_nodejs/.DS_Store
+.DS_Store
