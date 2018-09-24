@@ -25,7 +25,7 @@
         {
             if (activity.Type == ActivityTypes.Message)
             {
-                await translatorController.TranslateActivityText(activity, "en");
+                await translatorController.TranslateActivityText(activity, "en").ConfigureAwait(false);
                 await Conversation.SendAsync(activity, () => new RootLuisDialog());
             }
             else

@@ -24,24 +24,24 @@ namespace LuisBot.Controllers
 
         public async Task TranslateActivityText(Activity activity, string targetLanguage)
         {
-            string sourceLanguage = await DetectLanguageAsync(activity.Text);
-            ITranslatedDocument translatedDocument = await TranslateAsync(activity.Text, sourceLanguage, targetLanguage);
+            string sourceLanguage = await DetectLanguageAsync(activity.Text).ConfigureAwait(false);
+            ITranslatedDocument translatedDocument = await TranslateAsync(activity.Text, sourceLanguage, targetLanguage).ConfigureAwait(false);
             activity.Text = translatedDocument.GetTranslatedMessage();
         }
         
         private async Task<string> DetectLanguageAsync(string textToDetect)
         {
-            return await translator.DetectAsync(textToDetect);
+            return await translator.DetectAsync(textToDetect).ConfigureAwait(false);
         }
 
         private async Task<ITranslatedDocument> TranslateAsync(string textToTrasnlate, string from, string to)
         {
-            return await translator.TranslateAsync(textToTrasnlate, from, to);
+            return await translator.TranslateAsync(textToTrasnlate, from, to).ConfigureAwait(false);
         }
 
         private async Task<List<ITranslatedDocument>> TranslateArrayAsync(string[] textToTrasnlate, string from, string to)
         {
-            return await translator.TranslateArrayAsync(textToTrasnlate, from, to);
+            return await translator.TranslateArrayAsync(textToTrasnlate, from, to).ConfigureAwait(false);
         }
 
         private Dictionary<string, List<string>> GetPatterns()

@@ -61,8 +61,8 @@
 
         private async Task EchoToUser(IDialogContext context, LuisResult result)
         {
-            await this.ShowTranslation(context, result);
-            await this.ShowLuisResult(context, result);
+            await this.ShowTranslation(context, result).ConfigureAwait(false);
+            await this.ShowLuisResult(context, result).ConfigureAwait(false);
             context.Wait(MessageReceived);
         }
 
