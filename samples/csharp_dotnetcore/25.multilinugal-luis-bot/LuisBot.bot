@@ -1,0 +1,17 @@
+{
+    "name": "LuisBot",
+    "description": "",
+    "services": [
+        {
+            "type": "endpoint",
+            "appId": "",
+            "appPassword": "",
+            "endpoint": "http://localhost:52406/api/messages",
+            "id": "807b9ca0-c0ad-11e8-b23a-65dfabccad53",
+            "name": "http://localhost:52406/api/messages"
+        }
+    ],
+    "padlock": "",
+    "version": "2.0",
+    "overrides": null
+}
