@@ -29,9 +29,12 @@ git clone https://github.com/Microsoft/botbuilder-dotnet.git
 
 ### Visual studio
 - Navigate to the `botbuilder-samples\samples\csharp_dotnetcore\25.multilingual-luis-bot\` and open MultilingualLuisBot.csproj in visual studio
-- Add the translation project
-- right click on the solution and add existing project @ `botbuilder-samples\samples\csharp_dotnetcore\25.multilingual-luis-bot\Libraries\Microsoft.Bot.Builder.AI.Translation\Microsoft.Bot.Builder.AI.Translation.csproj`
 - Hit F5
+
+## Visual Studio Code
+- Open `botbuilder-samples\samples\csharp_dotnetcore\25.multilingual-luis-bot\` sample folder.
+- Bring up a terminal, navigate to BotBuilder-Samples\25.multilingual-luis-bot folder
+- type 'dotnet run'
 
 ## Testing the bot using Bot Framework Emulator
 [Microsoft Bot Framework Emulator](https://github.com/microsoft/botframework-emulator) is a desktop application that allows bot developers to test and debug their bots on localhost or running remotely through a tunnel.
